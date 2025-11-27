@@ -26,12 +26,12 @@ Tutti gli esercizi sono organizzati in cartelle per modulo e includono codice, n
 
 ## Struttura directory professionale
 wasa-exercises/
-│
-├── README.md
-├── .gitignore
-├── .editorconfig
-├── go.work
-│
+    │
+    ├── README.md
+    ├── .gitignore
+    ├── .editorconfig
+    ├── go.work
+    │
 ├── http/
 │   ├── request-parsing.go
 │   ├── simple-http-client.go
