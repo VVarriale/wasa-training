@@ -83,9 +83,6 @@ wasa-exercises/
     │   ├── router.js
     │   └── README.md
 
-
-
-
 ## Strumenti consigliati
 - VSCode + Go, Copilot, CodeGPT
 - Git / GitHub
