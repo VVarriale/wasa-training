@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  title: Hi-Lo Game
+  description: |
+    This API allow playing hi-lo game
+    and requesting the state of a game or the history
+    of all games
+  version: 0.0.1
+paths:
+  /games:
+    post:
+      summary: start a new game
+      description: | 
+        Start a new game generating the secret number
+        and return the created game id
+      responses:
+        "200":
+          description: new game created
+          content:
+            application/json:
+              schema:
+                type: integer
