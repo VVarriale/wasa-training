@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  title: An example OpenAPI document
+  description: |
+    This API allows playing hi-lo game and requesting the state of a game or the history of all the games
+  version: 0.0.1
+paths: {} # No endpoints defined yet
+  /games:
+    post:
+      summary: start a new game
+      description : |
+        Start a new game generatingthe secret number and return the created game id
+      response:
+        "200":
+          description: new game created
+          content:
+            applicationjson:
+              schema:
+                type: integer
+    get:
+  /games/{id}:
+  # ...
