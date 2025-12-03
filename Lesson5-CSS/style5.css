@@ -1,0 +1,12 @@
+ <head>
+ <style>
+ p{text-align:center;}
+ #hot {color:red;}
+ .xxl{font-size:300%;}
+ </style>
+ </head>
+ <body>
+ <p>Justcentered</p>
+ <pid="hot">Centeredred</p>
+ <pclass="xxl">Centeredlarge</p>
+ </body>
