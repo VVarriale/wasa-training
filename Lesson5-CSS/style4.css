@@ -1,0 +1,10 @@
+ <head>
+ <style>
+ h4{color:green}
+ </style>
+ </head>
+ <body>
+ <h4>Thisisgreen</h4>
+ <h4 style="color:cyan">Thisiscyan</h4>
+ <h4 style="font-family:sans-serif">Greensans</h4>
+ </body>
