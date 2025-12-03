@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: Fountains
+  description: |
+        This API allows locating and creating fountains in a town.
+  version: 0.0.1
+paths:
+  /fountains:
+    post:
+      summary: add (create) a new fountain
+      description: |
+                add a new fountain and get back the fountain id
+      requestBody:
+        description: all the attributes are used but the id
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/fountain"
+      responses:
+        "201":
+          description: new fountain created
+          content: 
+            application/json:
+              schema:
+                type: integer
+    get:
+      summary: list all fountains
+      description: |
+        obtain the list of all the fountains, 
+        with coordinates (lat and lon), status (good/faulty)
+        Specifying lat and lon, it returns the 5 nearest fountains        
+      parameters:
+        - name: lat
+          required: false
+          in: query
+          schema:
+            type: number
+        - name: lon
+          required: false
+          in: query
+          schema:
+            type: number
+      responses:
+        "200":
+          description: |
+            It is an array of objects
+            containing the fountain id, its coordinates
+            and its status            
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/fountain"
+        "400":
+          description: |
+                        either lat or lon missing or out of range
+  /fountains/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: this is the fountain id
+      schema:
+        type: integer
+        description: | 
+          an incremental number 
+          for each fountain
+    delete:
+      summary: remove a fountain
+      description: |
+                this deletes the fountain forever
+      responses:
+        "200":
+          description: fountain removed successfully
+        "404":
+          description: fountain not found, nothing has been deleted
+    put:
+      summary: change fountain data (lat and/or lon and/or status)
+      description: |
+                the old attributes will be overriden
+      requestBody:
+        description: | 
+          all the attributes are necessary and will override the old 
+          ones (not the id)
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/fountain"
+      responses:
+        "204":
+          description: An existing fountain has been updated
+        "400":
+          description: |
+                        one or more fields are incorrect
+        "404":
+          description: |
+                        Fountain not found. Nothing has been changed.
+        "422":
+          description: |
+                        fountain id in the path and in the body do not match
+    get:
+      summary: get fountain information
+      description: |
+                Return the attributes of the fountain, lat, lon, status
+      responses:
+        "200":
+          description: | 
+            the fountain is described in the body of this response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/fountain"
+        "404":
+          description: fountain not found
+components:
+  schemas:
+    fountain:
+      type: object
+      properties:
+        id:
+          type: integer
+        lat:
+          type: number
+        lon:
+          type: number
+        status:
+          type: string
+          enum:
+          - good
+          - faulty
